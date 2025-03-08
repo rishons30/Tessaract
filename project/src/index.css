@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary: #4CAF50;
-  --primary-dark: #1B5E20;
-  --primary-light: #66BB6A;
+  --primary: #4caf50;
+  --primary-dark: #1b5e20;
+  --primary-light: #66bb6a;
   --white: #ffffff;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--gray-100);
@@ -67,7 +67,7 @@ body {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -92,7 +92,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   padding: 2rem;
   text-align: center;
   color: var(--white);
@@ -344,7 +348,7 @@ body {
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var -gray-800);
+  color: var -gray-800;
 }
 
 .chart-section {
@@ -440,23 +444,23 @@ body {
   .nav-links {
     display: none;
   }
-  
+
   .hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero p {
     font-size: 1.25rem;
   }
-  
+
   .forms-container {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
