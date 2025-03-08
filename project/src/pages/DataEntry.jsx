@@ -27,35 +27,68 @@ function DataEntry() {
 
   const handleFlightSubmit = (e) => {
     e.preventDefault();
-    console.log('Flight Data:', flightData);
-    // Reset form
-    setFlightData({
-      flight_id: '',
-      dep_time: '',
-      arr_time: '',
-      origin: '',
-      dest: '',
-      subtype: '',
-      min_seating_capacity: '',
-      ground_time: '',
-      onward_flight: '',
-      passengers: '',
-      distance: ''
-    });
+    const formattedFlight = {
+      ...flightData,
+      dep_time: new Date(flightData.dep_time).toISOString().replace('T', ' ').slice(0, 16),
+      arr_time: new Date(flightData.arr_time).toISOString().replace('T', ' ').slice(0, 16),
+      min_seating_capacity: parseInt(flightData.min_seating_capacity),
+      ground_time: parseInt(flightData.ground_time),
+      passengers: parseInt(flightData.passengers),
+      distance: parseInt(flightData.distance),
+      onward_flight: flightData.onward_flight || null
+    };
+    fetch('http://localhost:5000/flights', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formattedFlight)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Flight added:', data);
+        setFlightData({
+          flight_id: '',
+          dep_time: '',
+          arr_time: '',
+          origin: '',
+          dest: '',
+          subtype: '',
+          min_seating_capacity: '',
+          ground_time: '',
+          onward_flight: '',
+          passengers: '',
+          distance: ''
+        });
+      })
+      .catch(error => console.error('Error adding flight:', error));
   };
 
   const handleAircraftSubmit = (e) => {
     e.preventDefault();
-    console.log('Aircraft Data:', aircraftData);
-    // Reset form
-    setAircraftData({
-      tail_num: '',
-      subtype: '',
-      capacity: '',
-      base_fuel: '',
-      efficiency: '',
-      pre_assignments: ''
-    });
+    const formattedAircraft = {
+      ...aircraftData,
+      capacity: parseInt(aircraftData.capacity),
+      base_fuel: parseFloat(aircraftData.base_fuel),
+      efficiency: parseFloat(aircraftData.efficiency),
+      pre_assignments: aircraftData.pre_assignments ? [{ start: "2025-03-07 " + aircraftData.pre_assignments.split('-')[0], end: "2025-03-07 " + aircraftData.pre_assignments.split('-')[1] }] : []
+    };
+    fetch('http://localhost:5000/aircraft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formattedAircraft)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Aircraft added:', data);
+        setAircraftData({
+          tail_num: '',
+          subtype: '',
+          capacity: '',
+          base_fuel: '',
+          efficiency: '',
+          pre_assignments: ''
+        });
+      })
+      .catch(error => console.error('Error adding aircraft:', error));
   };
 
   return (

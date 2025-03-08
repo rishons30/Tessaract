@@ -1,37 +1,29 @@
 import { useEffect, useState } from 'react';
 import { BarChart, Activity, Plane } from 'lucide-react';
-import { mockFlightData } from '../mockData';
 
 function Statistics() {
   const [stats, setStats] = useState({
-    totalFlights: 0,
-    avgPassengers: 0,
-    totalCarbon: 0,
-    avgCarbon: 0,
-    utilization: 0
+    total_flights: 0,
+    avg_passengers: 0,
+    total_co2: 0,
+    chaos_recovered: 0
   });
 
   useEffect(() => {
-    const flights = mockFlightData[0].events;
-    const totalFlights = flights.length;
-    const totalPassengers = flights.reduce((sum, flight) => sum + flight.passengers, 0);
-    const totalCarbon = flights.reduce((sum, flight) => sum + flight.carbon, 0);
-    const avgPassengers = totalPassengers / totalFlights;
-    const avgCarbon = totalCarbon / totalFlights;
-    const utilization = (totalPassengers / (totalFlights * 200)) * 100; // Assuming max capacity of 200
-
-    // Animate the stats
-    const timer = setTimeout(() => {
-      setStats({
-        totalFlights,
-        avgPassengers: Math.round(avgPassengers),
-        totalCarbon: Math.round(totalCarbon),
-        avgCarbon: Math.round(avgCarbon),
-        utilization: Math.round(utilization)
-      });
-    }, 500);
-
-    return () => clearTimeout(timer);
+    fetch('http://localhost:5000/statistics')
+      .then(response => response.json())
+      .then(data => {
+        const timer = setTimeout(() => {
+          setStats({
+            total_flights: data.total_flights,
+            avg_passengers: Math.round(data.avg_passengers),
+            total_co2: Math.round(data.total_co2),
+            chaos_recovered: data.chaos_recovered
+          });
+        }, 500);
+        return () => clearTimeout(timer);
+      })
+      .catch(error => console.error('Error fetching stats:', error));
   }, []);
 
   return (
@@ -44,7 +36,7 @@ function Statistics() {
             <Plane size={24} />
             <h3>Total Flights</h3>
           </div>
-          <div className="stat-value">{stats.totalFlights}</div>
+          <div className="stat-value">{stats.total_flights}</div>
         </div>
 
         <div className="stat-card">
@@ -52,7 +44,7 @@ function Statistics() {
             <Activity size={24} />
             <h3>Average Passengers</h3>
           </div>
-          <div className="stat-value">{stats.avgPassengers}</div>
+          <div className="stat-value">{stats.avg_passengers}</div>
         </div>
 
         <div className="stat-card">
@@ -60,27 +52,15 @@ function Statistics() {
             <BarChart size={24} />
             <h3>Total CO2 Emissions</h3>
           </div>
-          <div className="stat-value">{stats.totalCarbon} kg</div>
+          <div className="stat-value">{stats.total_co2} kg</div>
         </div>
 
         <div className="stat-card">
           <div className="stat-header">
             <Activity size={24} />
-            <h3>Average CO2 per Flight</h3>
+            <h3>Chaos Recovered</h3>
           </div>
-          <div className="stat-value">{stats.avgCarbon} kg</div>
-        </div>
-      </div>
-
-      <div className="chart-section">
-        <h3>Capacity Utilization</h3>
-        <div className="utilization-bar">
-          <div 
-            className="utilization-fill" 
-            style={{ width: `${stats.utilization}%` }}
-          >
-            {stats.utilization}%
-          </div>
+          <div className="stat-value">{stats.chaos_recovered}</div>
         </div>
       </div>
 

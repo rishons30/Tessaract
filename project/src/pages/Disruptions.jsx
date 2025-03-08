@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AlertTriangle, ArrowUpDown } from 'lucide-react';
-import { mockFlightData, mockChaosData } from '../mockData';
 
 function Disruptions() {
   const [isChaosMode, setIsChaosMode] = useState(false);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState('asc');
+  const [flights, setFlights] = useState([]);
+  const [chaosRecovered, setChaosRecovered] = useState(0);
 
-  const currentData = isChaosMode ? mockChaosData[0] : mockFlightData[0];
-  const flights = currentData.events;
+  useEffect(() => {
+    const endpoint = isChaosMode ? 'http://localhost:5000/disruptions' : 'http://localhost:5000/schedule';
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => {
+        setFlights(data.events || []);
+        setChaosRecovered(data.chaos_recovered || 0);
+      })
+      .catch(error => console.error('Error fetching disruptions:', error));
+  }, [isChaosMode]);
 
   const handleSort = (field) => {
     if (sortField === field) {
@@ -44,7 +53,7 @@ function Disruptions() {
       {isChaosMode && (
         <div className="chaos-alert">
           <AlertTriangle size={20} />
-          <span>Chaos Mode Active - {currentData.chaos_recovered} Disruptions Recovered</span>
+          <span>Chaos Mode Active - {chaosRecovered} Disruptions Recovered</span>
         </div>
       )}
 
@@ -85,8 +94,8 @@ function Disruptions() {
                 <td>{flight.tail_num}</td>
                 <td>{flight.origin}</td>
                 <td>{flight.dest}</td>
-                <td>{flight.dep_time}</td>
-                <td>{flight.arr_time}</td>
+                <td>{flight.dep_time.split(' ')[1]}</td>
+                <td>{flight.arr_time.split(' ')[1]}</td>
                 <td>{flight.passengers}</td>
                 <td>{flight.carbon.toFixed(2)}</td>
               </tr>

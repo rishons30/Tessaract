@@ -1,0 +1,43 @@
+{
+  "flights": [
+    {
+      "flight_id": "F001",
+      "dep_time": "2025-03-07 08:00",
+      "arr_time": "2025-03-07 10:00",
+      "origin": "JFK",
+      "dest": "LAX",
+      "subtype": "Boeing 737-800",
+      "min_seating_capacity": 160,
+      "ground_time": 60,
+      "onward_flight": "F002",
+      "passengers": 160,
+      "distance": 4000
+    },
+    {
+      "flight_id": "F002",
+      "dep_time": "2025-03-07 11:00",
+      "arr_time": "2025-03-07 12:00",
+      "origin": "LAX",
+      "dest": "SFO",
+      "subtype": "Boeing 737-800",
+      "min_seating_capacity": 120,
+      "ground_time": 60,
+      "onward_flight": null,
+      "passengers": 125,
+      "distance": 500
+    },
+    {
+      "flight_id": "F003",
+      "dep_time": "2025-03-07 09:00",
+      "arr_time": "2025-03-07 11:00",
+      "origin": "ORD",
+      "dest": "MIA",
+      "subtype": "Airbus A320",
+      "min_seating_capacity": 130,
+      "ground_time": 60,
+      "onward_flight": null,
+      "passengers": 135,
+      "distance": 2000
+    }
+  ]
+}
