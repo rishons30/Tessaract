@@ -1,62 +1,91 @@
 [
   {
-    "timestamp": "2025-03-08 16:12",
+    "timestamp": "2025-03-08 12:00",
     "mode": "normal",
     "assignments": {
-      "F001": "N103",
+      "F001": "N101",
       "F002": "N101",
-      "F003": "N107"
+      "F003": "N101",
+      "F004": "N104",
+      "F005": "N104"
     },
     "events": [
       {
         "flight_id": "F001",
-        "tail_num": "N103",
+        "tail_num": "N101",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20833.333333333336
+        "passengers": 165,
+        "carbon": 20408.16326530612
       },
       {
         "flight_id": "F002",
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.020408163265
       },
       {
         "flight_id": "F003",
-        "tail_num": "N107",
+        "tail_num": "N101",
+        "origin": "SFO",
+        "dest": "ORD",
+        "dep_time": "2025-03-07 12:00",
+        "arr_time": "2025-03-07 14:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 145,
+        "carbon": 15306.122448979591
+      },
+      {
+        "flight_id": "F004",
+        "tail_num": "N104",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
-        "carbon": 10833.333333333334
+        "carbon": 10947.368421052632
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N104",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10947.368421052632
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:30",
+    "timestamp": "2025-03-08 21:18",
     "mode": "normal",
     "assignments": {
       "F001": "N101",
       "F002": "N101",
-      "F003": "N107"
+      "F004": "N105",
+      "F005": "N107"
     },
     "events": [
       {
@@ -64,12 +93,12 @@
         "tail_num": "N101",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20408.163265306124
       },
       {
@@ -77,199 +106,246 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
+        "dep_time": "2025-03-07 10:00",
         "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:30",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:30",
-    "mode": "normal",
-    "assignments": {
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:30",
-    "mode": "normal",
-    "assignments": {
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:31",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N103",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N103",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20833.333333333336
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
+        "flight_id": "F004",
         "tail_num": "N105",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
+        "carbon": 11063.829787234043
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
+      }
+    ],
+    "chaos_recovered": 0
+  },
+  {
+    "timestamp": "2025-03-08 21:24",
+    "mode": "normal",
+    "assignments": {
+      "F001": "N102",
+      "F002": "N101",
+      "F004": "N105",
+      "F005": "N107"
+    },
+    "events": [
+      {
+        "flight_id": "F001",
+        "tail_num": "N102",
+        "origin": "JFK",
+        "dest": "LAX",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
+        "min_seating_capacity": 160,
+        "ground_time": 60,
+        "onward_flight": "F002",
+        "passengers": 165,
+        "carbon": 20618.556701030928
+      },
+      {
+        "flight_id": "F002",
+        "tail_num": "N101",
+        "origin": "LAX",
+        "dest": "SFO",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
+        "min_seating_capacity": 120,
+        "ground_time": 60,
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.0204081632655
+      },
+      {
+        "flight_id": "F004",
+        "tail_num": "N105",
+        "origin": "ORD",
+        "dest": "MIA",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
+        "min_seating_capacity": 130,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 135,
+        "carbon": 11063.829787234043
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
+      }
+    ],
+    "chaos_recovered": 0
+  },
+  {
+    "timestamp": "2025-03-08 21:24",
+    "mode": "normal",
+    "assignments": {
+      "F001": "N101",
+      "F002": "N101",
+      "F003": "N106",
+      "F004": "N110",
+      "F005": "N105"
+    },
+    "events": [
+      {
+        "flight_id": "F001",
+        "tail_num": "N101",
+        "origin": "JFK",
+        "dest": "LAX",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
+        "min_seating_capacity": 160,
+        "ground_time": 60,
+        "onward_flight": "F002",
+        "passengers": 165,
+        "carbon": 20408.163265306124
+      },
+      {
+        "flight_id": "F002",
+        "tail_num": "N101",
+        "origin": "LAX",
+        "dest": "SFO",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
+        "min_seating_capacity": 120,
+        "ground_time": 60,
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.0204081632655
+      },
+      {
+        "flight_id": "F003",
+        "tail_num": "N106",
+        "origin": "SFO",
+        "dest": "ORD",
+        "dep_time": "2025-03-07 12:00",
+        "arr_time": "2025-03-07 14:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 145,
+        "carbon": 15306.122448979591
+      },
+      {
+        "flight_id": "F004",
+        "tail_num": "N110",
+        "origin": "ORD",
+        "dest": "MIA",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
+        "min_seating_capacity": 130,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 135,
+        "carbon": 10721.649484536083
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N105",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
         "carbon": 11063.829787234043
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:31",
+    "timestamp": "2025-03-08 21:25",
+    "mode": "normal",
+    "assignments": {
+      "F002": "N101",
+      "F004": "N107",
+      "F005": "N107"
+    },
+    "events": [
+      {
+        "flight_id": "F002",
+        "tail_num": "N101",
+        "origin": "LAX",
+        "dest": "SFO",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
+        "min_seating_capacity": 120,
+        "ground_time": 60,
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.0204081632655
+      },
+      {
+        "flight_id": "F004",
+        "tail_num": "N107",
+        "origin": "ORD",
+        "dest": "MIA",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
+        "min_seating_capacity": 130,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 135,
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
+      }
+    ],
+    "chaos_recovered": 0
+  },
+  {
+    "timestamp": "2025-03-08 21:25",
     "mode": "normal",
     "assignments": {
       "F001": "N101",
       "F002": "N101",
-      "F003": "N107"
+      "F004": "N107",
+      "F005": "N110"
     },
     "events": [
       {
@@ -277,12 +353,12 @@
         "tail_num": "N101",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20408.163265306124
       },
       {
@@ -290,403 +366,51 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
+        "flight_id": "F004",
         "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
         "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:32",
-    "mode": "normal",
-    "assignments": {
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
+        "flight_id": "F005",
         "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
         "ground_time": 60,
         "onward_flight": null,
-        "passengers": 135,
+        "passengers": 150,
         "carbon": 10721.649484536083
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:36",
+    "timestamp": "2025-03-08 21:25",
     "mode": "normal",
     "assignments": {
       "F001": "N101",
       "F002": "N101",
-      "F003": "N110"
+      "F004": "N107",
+      "F005": "N107"
     },
     "events": [
       {
@@ -694,12 +418,12 @@
         "tail_num": "N101",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20408.163265306124
       },
       {
@@ -707,37 +431,102 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N110",
+        "flight_id": "F004",
+        "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
+      }
+    ],
+    "chaos_recovered": 0
+  },
+  {
+    "timestamp": "2025-03-08 21:25",
+    "mode": "normal",
+    "assignments": {
+      "F001": "N101",
+      "F002": "N101",
+      "F005": "N110"
+    },
+    "events": [
+      {
+        "flight_id": "F001",
+        "tail_num": "N101",
+        "origin": "JFK",
+        "dest": "LAX",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
+        "min_seating_capacity": 160,
+        "ground_time": 60,
+        "onward_flight": "F002",
+        "passengers": 165,
+        "carbon": 20408.163265306124
+      },
+      {
+        "flight_id": "F002",
+        "tail_num": "N101",
+        "origin": "LAX",
+        "dest": "SFO",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
+        "min_seating_capacity": 120,
+        "ground_time": 60,
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.0204081632655
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N110",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
         "carbon": 10721.649484536083
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:39",
+    "timestamp": "2025-03-08 21:57",
     "mode": "normal",
     "assignments": {
       "F001": "N109",
       "F002": "N101",
-      "F003": "N110"
+      "F004": "N107",
+      "F005": "N107"
     },
     "events": [
       {
@@ -745,12 +534,12 @@
         "tail_num": "N109",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 21052.63157894737
       },
       {
@@ -758,241 +547,51 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N110",
+        "flight_id": "F004",
+        "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:39",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
         "dep_time": "2025-03-07 08:00",
         "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
-        "carbon": 11063.829787234043
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
+    "timestamp": "2025-03-08 21:57",
     "mode": "normal",
     "assignments": {
       "F001": "N103",
       "F002": "N101",
-      "F003": "N105"
+      "F004": "N104",
+      "F005": "N107"
     },
     "events": [
       {
@@ -1000,12 +599,12 @@
         "tail_num": "N103",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20833.333333333336
       },
       {
@@ -1013,125 +612,116 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N105",
+        "flight_id": "F004",
+        "tail_num": "N104",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "chaos",
-    "assignments": {
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 3061.2244897959185
+        "carbon": 10947.368421052632
       },
       {
-        "flight_id": "F003",
+        "flight_id": "F005",
         "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
         "ground_time": 60,
         "onward_flight": null,
-        "passengers": 135,
-        "carbon": 13000.0
+        "passengers": 150,
+        "carbon": 10833.333333333334
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "chaos",
+    "timestamp": "2025-03-08 21:58",
+    "mode": "normal",
     "assignments": {
-      "F002": "N102",
-      "F003": "N105",
-      "F001": "N101"
+      "F001": "N101",
+      "F002": "N101",
+      "F004": "N110",
+      "F005": "N110"
     },
     "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N102",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2577.319587628866
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      },
       {
         "flight_id": "F001",
         "tail_num": "N101",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20408.163265306124
+      },
+      {
+        "flight_id": "F002",
+        "tail_num": "N101",
+        "origin": "LAX",
+        "dest": "SFO",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
+        "min_seating_capacity": 120,
+        "ground_time": 60,
+        "onward_flight": "F003",
+        "passengers": 130,
+        "carbon": 2551.0204081632655
+      },
+      {
+        "flight_id": "F004",
+        "tail_num": "N110",
+        "origin": "ORD",
+        "dest": "MIA",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
+        "min_seating_capacity": 130,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 135,
+        "carbon": 10721.649484536083
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N110",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10721.649484536083
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
+    "timestamp": "2025-03-08 21:58",
     "mode": "normal",
     "assignments": {
       "F001": "N102",
       "F002": "N101",
-      "F003": "N104"
+      "F004": "N107",
+      "F005": "N107"
     },
     "events": [
       {
@@ -1139,12 +729,12 @@
         "tail_num": "N102",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20618.556701030928
       },
       {
@@ -1152,37 +742,51 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N104",
+        "flight_id": "F004",
+        "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
-        "carbon": 10947.368421052632
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
+    "timestamp": "2025-03-08 21:58",
     "mode": "normal",
     "assignments": {
       "F001": "N103",
       "F002": "N101",
-      "F003": "N110"
+      "F004": "N107",
+      "F005": "N110"
     },
     "events": [
       {
@@ -1190,12 +794,12 @@
         "tail_num": "N103",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20833.333333333336
       },
       {
@@ -1203,111 +807,115 @@
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N110",
+        "flight_id": "F004",
+        "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N110",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
         "carbon": 10721.649484536083
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "chaos",
+    "timestamp": "2025-03-08 21:58",
+    "mode": "normal",
     "assignments": {
-      "F002": "N102",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N102",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 3092.783505154639
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 13000.0
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "chaos",
-    "assignments": {
+      "F001": "N101",
       "F002": "N101",
-      "F003": "N104"
+      "F004": "N107",
+      "F005": "N107"
     },
     "events": [
+      {
+        "flight_id": "F001",
+        "tail_num": "N101",
+        "origin": "JFK",
+        "dest": "LAX",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
+        "min_seating_capacity": 160,
+        "ground_time": 60,
+        "onward_flight": "F002",
+        "passengers": 165,
+        "carbon": 20408.163265306124
+      },
       {
         "flight_id": "F002",
         "tail_num": "N101",
         "origin": "LAX",
         "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
+        "dep_time": "2025-03-07 10:00",
+        "arr_time": "2025-03-07 11:00",
         "min_seating_capacity": 120,
         "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
+        "onward_flight": "F003",
+        "passengers": 130,
         "carbon": 2551.0204081632655
       },
       {
-        "flight_id": "F003",
-        "tail_num": "N104",
+        "flight_id": "F004",
+        "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
-        "carbon": 10947.368421052632
+        "carbon": 10833.333333333334
+      },
+      {
+        "flight_id": "F005",
+        "tail_num": "N107",
+        "origin": "MIA",
+        "dest": "JFK",
+        "dep_time": "2025-03-07 11:00",
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
+        "ground_time": 60,
+        "onward_flight": null,
+        "passengers": 150,
+        "carbon": 10833.333333333334
       }
     ],
     "chaos_recovered": 0
   },
   {
-    "timestamp": "2025-03-08 16:51",
+    "timestamp": "2025-03-08 21:59",
     "mode": "normal",
     "assignments": {
       "F001": "N102",
-      "F002": "N101",
-      "F003": "N110"
+      "F004": "N107",
+      "F005": "N105"
     },
     "events": [
       {
@@ -1315,974 +923,38 @@
         "tail_num": "N102",
         "origin": "JFK",
         "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
+        "dep_time": "2025-03-07 07:00",
+        "arr_time": "2025-03-07 09:00",
         "min_seating_capacity": 160,
         "ground_time": 60,
         "onward_flight": "F002",
-        "passengers": 160,
+        "passengers": 165,
         "carbon": 20618.556701030928
       },
       {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N108",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N108",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2577.319587628866
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
+        "flight_id": "F004",
         "tail_num": "N107",
         "origin": "ORD",
         "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
+        "dep_time": "2025-03-07 08:00",
+        "arr_time": "2025-03-07 10:00",
         "min_seating_capacity": 130,
         "ground_time": 60,
         "onward_flight": null,
         "passengers": 135,
         "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
       },
       {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:51",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
+        "flight_id": "F005",
         "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N108",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N108",
-        "origin": "LAX",
-        "dest": "SFO",
+        "origin": "MIA",
+        "dest": "JFK",
         "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
+        "arr_time": "2025-03-07 13:00",
+        "min_seating_capacity": 140,
         "ground_time": 60,
         "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2577.319587628866
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "chaos",
-    "assignments": {
-      "F002": "N109",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N109",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 3157.8947368421054
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 13000.0
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "chaos",
-    "assignments": {
-      "F002": "N106",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N106",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 16:55",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N110"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N110",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10721.649484536083
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 17:18",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 11063.829787234043
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 17:18",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F002": "N101",
-      "F003": "N104"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N104",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10947.368421052632
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 18:05",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N106",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N106",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 18:05",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 18:05",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N102",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N102",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20618.556701030928
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 18:05",
-    "mode": "normal",
-    "assignments": {
-      "F002": "N101",
-      "F003": "N107"
-    },
-    "events": [
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N107",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
-        "carbon": 10833.333333333334
-      }
-    ],
-    "chaos_recovered": 0
-  },
-  {
-    "timestamp": "2025-03-08 18:05",
-    "mode": "normal",
-    "assignments": {
-      "F001": "N101",
-      "F002": "N101",
-      "F003": "N105"
-    },
-    "events": [
-      {
-        "flight_id": "F001",
-        "tail_num": "N101",
-        "origin": "JFK",
-        "dest": "LAX",
-        "dep_time": "2025-03-07 08:00",
-        "arr_time": "2025-03-07 10:00",
-        "min_seating_capacity": 160,
-        "ground_time": 60,
-        "onward_flight": "F002",
-        "passengers": 160,
-        "carbon": 20408.163265306124
-      },
-      {
-        "flight_id": "F002",
-        "tail_num": "N101",
-        "origin": "LAX",
-        "dest": "SFO",
-        "dep_time": "2025-03-07 11:00",
-        "arr_time": "2025-03-07 12:00",
-        "min_seating_capacity": 120,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 125,
-        "carbon": 2551.0204081632655
-      },
-      {
-        "flight_id": "F003",
-        "tail_num": "N105",
-        "origin": "ORD",
-        "dest": "MIA",
-        "dep_time": "2025-03-07 09:00",
-        "arr_time": "2025-03-07 11:00",
-        "min_seating_capacity": 130,
-        "ground_time": 60,
-        "onward_flight": null,
-        "passengers": 135,
+        "passengers": 150,
         "carbon": 11063.829787234043
       }
     ],

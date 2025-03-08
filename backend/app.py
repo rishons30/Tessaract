@@ -19,7 +19,9 @@ def load_data(file_path, default):
             return json.load(f)
     except FileNotFoundError:
         with open(file_path, "w") as f:
-            json.dump(default, f)
+            json.dump(default, f, indent=2)
+        return default
+    except json.JSONDecodeError:
         return default
 
 aircraft_data = load_data(AIRCRAFT_FILE, {"aircraft": []})
@@ -42,7 +44,9 @@ def is_available(tail, flight, assignments, aircraft_list, respect_pre=True):
             if not (arr + ground <= f_dep or f_arr + ground <= dep):
                 return False
     if respect_pre:
-        aircraft = next(a for a in aircraft_list if a["tail_num"] == tail)
+        aircraft = next((a for a in aircraft_list if a["tail_num"] == tail), None)
+        if not aircraft:
+            return False
         for pre in aircraft["pre_assignments"]:
             pre_start = parse_time(pre["start"])
             pre_end = parse_time(pre["end"])
@@ -67,7 +71,7 @@ def run_rl(chaos=False, respect_pre=True, break_trips=False):
     alpha, gamma, epsilon = 0.1, 0.9, 0.1
 
     assignments = {}
-    for _ in range(20):
+    for epoch in range(20):
         state = 0
         current_assignments = assignments.copy()
         while state < len(flight_ids):
@@ -80,19 +84,19 @@ def run_rl(chaos=False, respect_pre=True, break_trips=False):
                      is_available(tail, flight, current_assignments, aircraft_list, respect_pre))
             if not break_trips and flight["onward_flight"] and flight["onward_flight"] in current_assignments:
                 valid = valid and current_assignments[flight["onward_flight"]] == tail
-            co2 = calc_co2(flight, tail, aircraft_list) * (1.2 if chaos and _ == 10 else 1.0)
+            co2 = calc_co2(flight, tail, aircraft_list) * (1.2 if chaos and epoch == 10 else 1.0)
             reward = 100 - co2 / 100 if valid else -100
             if valid:
                 current_assignments[flight_id] = tail
             next_max = np.max(q_table[state + 1]) if state + 1 < len(flight_ids) else 0
             q_table[state, action] = (1 - alpha) * q_table[state, action] + alpha * (reward + gamma * next_max)
             state += 1
-        if _ == 19 or (chaos and _ == 11):
+        if epoch == 19 or (chaos and epoch == 11):
             assignments = current_assignments.copy()
             events = [{"flight_id": fid, "tail_num": tail, "origin": f["origin"], "dest": f["dest"],
                        "dep_time": f["dep_time"], "arr_time": f["arr_time"], "min_seating_capacity": f["min_seating_capacity"],
                        "ground_time": f["ground_time"], "onward_flight": f["onward_flight"], "passengers": f["passengers"],
-                       "carbon": calc_co2(f, tail, aircraft_list) * (1.2 if chaos and _ == 11 else 1.0)}
+                       "carbon": calc_co2(f, tail, aircraft_list) * (1.2 if chaos and epoch == 11 else 1.0)}
                       for fid, tail in assignments.items() for f in flight_list if f["flight_id"] == fid]
             chaos_recovered = len(assignments) - len([e for e in events if e["carbon"] > 500]) if chaos else 0
             result = {"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"), "mode": "chaos" if chaos else "normal",
@@ -125,7 +129,7 @@ def get_schedule():
     temp_aircraft = aircraft_data.copy()
     flights_data["flights"] = filtered_flights
     aircraft_data["aircraft"] = filtered_aircraft
-    run_rl(chaos=False, respect_pre=respect_pre, break_trips=break_trips)
+    result = run_rl(chaos=False, respect_pre=respect_pre, break_trips=break_trips)
     flights_data = temp_flights
     aircraft_data = temp_aircraft
     return jsonify(next(r for r in results_db if r["mode"] == "normal"))
@@ -149,7 +153,7 @@ def get_disruptions():
     temp_aircraft = aircraft_data.copy()
     flights_data["flights"] = filtered_flights
     aircraft_data["aircraft"] = filtered_aircraft
-    run_rl(chaos=True, respect_pre=respect_pre, break_trips=break_trips)
+    result = run_rl(chaos=True, respect_pre=respect_pre, break_trips=break_trips)
     flights_data = temp_flights
     aircraft_data = temp_aircraft
     return jsonify(next(r for r in results_db if r["mode"] == "chaos"))
@@ -163,12 +167,12 @@ def add_aircraft():
     data = request.json
     required = ["tail_num", "subtype", "capacity", "base_fuel", "efficiency"]
     if not all(k in data for k in required):
-        return jsonify({"error": "Missing fields"}), 400
+        return jsonify({"error": "Missing required fields"}), 400
     data["pre_assignments"] = data.get("pre_assignments", [])
     aircraft_data["aircraft"].append(data)
     with open(AIRCRAFT_FILE, "w") as f:
         json.dump(aircraft_data, f, indent=2)
-    return jsonify({"message": "Aircraft added"}), 201
+    return jsonify({"message": "Aircraft added successfully"}), 201
 
 @app.route("/flights", methods=["GET"])
 def get_flights():
@@ -179,17 +183,17 @@ def add_flight():
     data = request.json
     required = ["flight_id", "dep_time", "arr_time", "origin", "dest", "subtype", "min_seating_capacity", "ground_time", "passengers", "distance"]
     if not all(k in data for k in required):
-        return jsonify({"error": "Missing fields"}), 400
+        return jsonify({"error": "Missing required fields"}), 400
     data["onward_flight"] = data.get("onward_flight", None)
     flights_data["flights"].append(data)
     with open(FLIGHTS_FILE, "w") as f:
         json.dump(flights_data, f, indent=2)
-    return jsonify({"message": "Flight added"}), 201
+    return jsonify({"message": "Flight added successfully"}), 201
 
 @app.route("/statistics", methods=["GET"])
 def get_statistics():
     if not results_db:
-        return jsonify({"error": "No results yet"}), 404
+        return jsonify({"error": "No results available yet"}), 404
     latest = results_db[-1]
     stats = {
         "total_flights": len(latest["events"]),
@@ -198,34 +202,6 @@ def get_statistics():
         "chaos_recovered": latest["chaos_recovered"]
     }
     return jsonify(stats)
-
-# Initial Mock Data
-if not aircraft_data["aircraft"]:
-    aircraft_data["aircraft"] = [
-        {"tail_num": "N101", "subtype": "Boeing 737-800", "capacity": 180, "base_fuel": 5.0, "efficiency": 0.98, "pre_assignments": [{"start": "2025-03-07 12:00", "end": "2025-03-07 14:00"}]},
-        {"tail_num": "N102", "subtype": "Boeing 737-800", "capacity": 175, "base_fuel": 5.0, "efficiency": 0.97, "pre_assignments": []},
-        {"tail_num": "N103", "subtype": "Boeing 737-800", "capacity": 180, "base_fuel": 5.0, "efficiency": 0.96, "pre_assignments": []},
-        {"tail_num": "N104", "subtype": "Airbus A320", "capacity": 150, "base_fuel": 5.2, "efficiency": 0.95, "pre_assignments": [{"start": "2025-03-07 15:00", "end": "2025-03-07 17:00"}]},
-        {"tail_num": "N105", "subtype": "Airbus A320", "capacity": 160, "base_fuel": 5.2, "efficiency": 0.94, "pre_assignments": []},
-        {"tail_num": "N106", "subtype": "Boeing 737-800", "capacity": 170, "base_fuel": 5.0, "efficiency": 0.98, "pre_assignments": []},
-        {"tail_num": "N107", "subtype": "Airbus A320", "capacity": 155, "base_fuel": 5.2, "efficiency": 0.96, "pre_assignments": []},
-        {"tail_num": "N108", "subtype": "Boeing 737-800", "capacity": 180, "base_fuel": 5.0, "efficiency": 0.97, "pre_assignments": [{"start": "2025-03-07 09:00", "end": "2025-03-07 11:00"}]},
-        {"tail_num": "N109", "subtype": "Boeing 737-800", "capacity": 175, "base_fuel": 5.0, "efficiency": 0.95, "pre_assignments": []},
-        {"tail_num": "N110", "subtype": "Airbus A320", "capacity": 150, "base_fuel": 5.2, "efficiency": 0.97, "pre_assignments": []}
-    ]
-    with open(AIRCRAFT_FILE, "w") as f:
-        json.dump(aircraft_data, f, indent=2)
-
-if not flights_data["flights"]:
-    flights_data["flights"] = [
-        {"flight_id": "F001", "dep_time": "2025-03-07 07:00", "arr_time": "2025-03-07 09:00", "origin": "JFK", "dest": "LAX", "subtype": "Boeing 737-800", "min_seating_capacity": 160, "ground_time": 60, "onward_flight": "F002", "passengers": 165, "distance": 4000},
-        {"flight_id": "F002", "dep_time": "2025-03-07 10:00", "arr_time": "2025-03-07 11:00", "origin": "LAX", "dest": "SFO", "subtype": "Boeing 737-800", "min_seating_capacity": 120, "ground_time": 60, "onward_flight": "F003", "passengers": 130, "distance": 500},
-        {"flight_id": "F003", "dep_time": "2025-03-07 12:00", "arr_time": "2025-03-07 14:00", "origin": "SFO", "dest": "ORD", "subtype": "Boeing 737-800", "min_seating_capacity": 140, "ground_time": 60, "onward_flight": None, "passengers": 145, "distance": 3000},
-        {"flight_id": "F004", "dep_time": "2025-03-07 08:00", "arr_time": "2025-03-07 10:00", "origin": "ORD", "dest": "MIA", "subtype": "Airbus A320", "min_seating_capacity": 130, "ground_time": 60, "onward_flight": None, "passengers": 135, "distance": 2000},
-        {"flight_id": "F005", "dep_time": "2025-03-07 11:00", "arr_time": "2025-03-07 13:00", "origin": "MIA", "dest": "JFK", "subtype": "Airbus A320", "min_seating_capacity": 140, "ground_time": 60, "onward_flight": None, "passengers": 150, "distance": 2000}
-    ]
-    with open(FLIGHTS_FILE, "w") as f:
-        json.dump(flights_data, f, indent=2)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

@@ -12,7 +12,7 @@ function App() {
       <nav className="nav">
         <div className="nav-content">
           <Link to="/" className="nav-logo">
-            <Plane size={24} /> GreenTail AI
+            <Plane size={24} className="rotating-icon" /> GreenTail AI
           </Link>
           <div className="nav-links">
             <Link to="/schedule" className="nav-link">Schedule</Link>

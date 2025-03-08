@@ -2,34 +2,47 @@
   "flights": [
     {
       "flight_id": "F001",
-      "dep_time": "2025-03-07 08:00",
-      "arr_time": "2025-03-07 10:00",
+      "dep_time": "2025-03-07 07:00",
+      "arr_time": "2025-03-07 09:00",
       "origin": "JFK",
       "dest": "LAX",
       "subtype": "Boeing 737-800",
       "min_seating_capacity": 160,
       "ground_time": 60,
       "onward_flight": "F002",
-      "passengers": 160,
+      "passengers": 165,
       "distance": 4000
     },
     {
       "flight_id": "F002",
-      "dep_time": "2025-03-07 11:00",
-      "arr_time": "2025-03-07 12:00",
+      "dep_time": "2025-03-07 10:00",
+      "arr_time": "2025-03-07 11:00",
       "origin": "LAX",
       "dest": "SFO",
       "subtype": "Boeing 737-800",
       "min_seating_capacity": 120,
       "ground_time": 60,
-      "onward_flight": null,
-      "passengers": 125,
+      "onward_flight": "F003",
+      "passengers": 130,
       "distance": 500
     },
     {
       "flight_id": "F003",
-      "dep_time": "2025-03-07 09:00",
-      "arr_time": "2025-03-07 11:00",
+      "dep_time": "2025-03-07 12:00",
+      "arr_time": "2025-03-07 14:00",
+      "origin": "SFO",
+      "dest": "ORD",
+      "subtype": "Boeing 737-800",
+      "min_seating_capacity": 140,
+      "ground_time": 60,
+      "onward_flight": null,
+      "passengers": 145,
+      "distance": 3000
+    },
+    {
+      "flight_id": "F004",
+      "dep_time": "2025-03-07 08:00",
+      "arr_time": "2025-03-07 10:00",
       "origin": "ORD",
       "dest": "MIA",
       "subtype": "Airbus A320",
@@ -38,6 +51,32 @@
       "onward_flight": null,
       "passengers": 135,
       "distance": 2000
+    },
+    {
+      "flight_id": "F005",
+      "dep_time": "2025-03-07 11:00",
+      "arr_time": "2025-03-07 13:00",
+      "origin": "MIA",
+      "dest": "JFK",
+      "subtype": "Airbus A320",
+      "min_seating_capacity": 140,
+      "ground_time": 60,
+      "onward_flight": null,
+      "passengers": 150,
+      "distance": 2000
+    },
+    {
+      "flight_id": "dhhe22",
+      "dep_time": "2025-03-08 17:30",
+      "arr_time": "2025-03-07 19:30",
+      "origin": "eee",
+      "dest": "rrrr",
+      "subtype": "ew",
+      "min_seating_capacity": 33,
+      "ground_time": 33,
+      "onward_flight": "33ee",
+      "passengers": 33,
+      "distance": 333
     }
   ]
 }

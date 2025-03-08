@@ -250,7 +250,7 @@ body {
 /* Forms */
 .forms-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -348,7 +348,7 @@ body {
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var -gray-800;
+  color: var(--gray-800);
 }
 
 .chart-section {
@@ -396,6 +396,34 @@ body {
   opacity: 0.8;
 }
 
+/* Toggle Buttons for Data Entry */
+.toggle-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.toggle-buttons button {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--gray-200);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.toggle-buttons button.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.toggle-buttons button:hover {
+  background: var(--primary-light);
+  color: var(--white);
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -418,15 +446,9 @@ body {
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .rotating-icon {

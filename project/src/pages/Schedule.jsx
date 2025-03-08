@@ -57,109 +57,114 @@ function Schedule() {
   });
 
   return (
-    <div style={{ padding: '20px', background: '#f0f0f0', minHeight: '100vh' }}>
-      <h2 style={{ color: '#4CAF50', marginTop: '60px', textAlign: 'center' }}>Flight Schedule</h2>
+    <div className="container">
+      <h2 className="page-title">Flight Schedule</h2>
       
       {/* Filter Form */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginBottom: '20px', padding: '15px', background: '#ffffff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>Subtype</label>
-          <input 
-            name="subtype" 
-            value={filters.subtype} 
-            onChange={handleFilterChange} 
-            placeholder="e.g., Boeing 737-800" 
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '14px' }}
-          />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>Start Date</label>
-          <input 
-            type="date" 
-            name="start_date" 
-            value={filters.start_date} 
-            onChange={handleFilterChange} 
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '14px' }}
-          />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>End Date</label>
-          <input 
-            type="date" 
-            name="end_date" 
-            value={filters.end_date} 
-            onChange={handleFilterChange} 
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '14px' }}
-          />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>Respect Pre-assignments</label>
-          <input 
-            type="checkbox" 
-            name="respect_pre" 
-            checked={filters.respect_pre} 
-            onChange={handleFilterChange} 
-            style={{ marginTop: '8px' }}
-          />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>Exclude Tails</label>
-          <input 
-            name="exclude_tails" 
-            value={filters.exclude_tails} 
-            onChange={handleFilterChange} 
-            placeholder="e.g., N101,N102" 
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '14px' }}
-          />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', minWidth: '150px' }}>
-          <label style={{ marginBottom: '5px', fontWeight: 'bold', color: '#4CAF50' }}>Break Trips</label>
-          <input 
-            type="checkbox" 
-            name="break_trips" 
-            checked={filters.break_trips} 
-            onChange={handleFilterChange} 
-            style={{ marginTop: '8px' }}
-          />
+      <div className="forms-container">
+        <div className="form-section">
+          <h3>Filters</h3>
+          <div className="data-form">
+            <div className="form-row">
+              <div className="form-group">
+                <label>Subtype</label>
+                <input 
+                  name="subtype" 
+                  value={filters.subtype} 
+                  onChange={handleFilterChange} 
+                  placeholder="e.g., Boeing 737-800"
+                />
+              </div>
+              <div className="form-group">
+                <label>Start Date</label>
+                <input 
+                  type="date" 
+                  name="start_date" 
+                  value={filters.start_date} 
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>End Date</label>
+                <input 
+                  type="date" 
+                  name="end_date" 
+                  value={filters.end_date} 
+                  onChange={handleFilterChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Respect Pre-assignments</label>
+                <input 
+                  type="checkbox" 
+                  name="respect_pre" 
+                  checked={filters.respect_pre} 
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Exclude Tails</label>
+                <input 
+                  name="exclude_tails" 
+                  value={filters.exclude_tails} 
+                  onChange={handleFilterChange} 
+                  placeholder="e.g., N101,N102"
+                />
+              </div>
+              <div className="form-group">
+                <label>Break Trips</label>
+                <input 
+                  type="checkbox" 
+                  name="break_trips" 
+                  checked={filters.break_trips} 
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Table */}
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', background: '#ffffff', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <div className="table-container">
+        <table className="data-table">
           <thead>
-            <tr style={{ background: '#66BB6A', color: 'white' }}>
-              <th onClick={() => handleSort('flight_id')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+            <tr>
+              <th onClick={() => handleSort('flight_id')}>
                 Flight ID <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('tail_num')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('tail_num')}>
                 Tail Number <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('origin')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('origin')}>
                 Origin <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('dest')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('dest')}>
                 Destination <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('dep_time')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('dep_time')}>
                 Departure <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('arr_time')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('arr_time')}>
                 Arrival <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('min_seating_capacity')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('min_seating_capacity')}>
                 Min Seats <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('ground_time')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('ground_time')}>
                 Ground Time <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('passengers')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('passengers')}>
                 Passengers <ArrowUpDown size={16} />
               </th>
-              <th onClick={() => handleSort('carbon')} style={{ padding: '10px', textAlign: 'left', cursor: 'pointer' }}>
+              <th onClick={() => handleSort('carbon')}>
                 CO2 (kg) <ArrowUpDown size={16} />
               </th>
-              <th style={{ padding: '10px', textAlign: 'left' }}>Onward Flight</th>
+              <th>Onward Flight</th>
             </tr>
           </thead>
           <tbody>
@@ -167,25 +172,19 @@ function Schedule() {
               <tr 
                 key={flight.flight_id}
                 onClick={() => setSelectedFlight(flight)}
-                style={{ 
-                  borderBottom: '1px solid #ddd', 
-                  cursor: 'pointer', 
-                  backgroundColor: selectedFlight?.flight_id === flight.flight_id ? '#e0f7fa' : 'transparent' 
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e0f7fa'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = selectedFlight?.flight_id === flight.flight_id ? '#e0f7fa' : 'transparent'}
+                className={selectedFlight?.flight_id === flight.flight_id ? 'selected' : ''}
               >
-                <td style={{ padding: '10px' }}>{flight.flight_id}</td>
-                <td style={{ padding: '10px' }}>{flight.tail_num}</td>
-                <td style={{ padding: '10px' }}>{flight.origin}</td>
-                <td style={{ padding: '10px' }}>{flight.dest}</td>
-                <td style={{ padding: '10px' }}>{flight.dep_time.split(' ')[1]}</td>
-                <td style={{ padding: '10px' }}>{flight.arr_time.split(' ')[1]}</td>
-                <td style={{ padding: '10px' }}>{flight.min_seating_capacity}</td>
-                <td style={{ padding: '10px' }}>{flight.ground_time} min</td>
-                <td style={{ padding: '10px' }}>{flight.passengers}</td>
-                <td style={{ padding: '10px' }}>{flight.carbon.toFixed(2)}</td>
-                <td style={{ padding: '10px' }}>{flight.onward_flight || '-'}</td>
+                <td>{flight.flight_id}</td>
+                <td>{flight.tail_num}</td>
+                <td>{flight.origin}</td>
+                <td>{flight.dest}</td>
+                <td>{flight.dep_time.split(' ')[1]}</td>
+                <td>{flight.arr_time.split(' ')[1]}</td>
+                <td>{flight.min_seating_capacity}</td>
+                <td>{flight.ground_time} min</td>
+                <td>{flight.passengers}</td>
+                <td>{flight.carbon.toFixed(2)}</td>
+                <td>{flight.onward_flight || '-'}</td>
               </tr>
             ))}
           </tbody>
@@ -194,51 +193,21 @@ function Schedule() {
 
       {/* Popup */}
       {selectedFlight && (
-        <div style={{ 
-          position: 'fixed', 
-          top: '0', 
-          left: '0', 
-          width: '100%', 
-          height: '100%', 
-          background: 'rgba(0,0,0,0.5)', 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center' 
-        }}>
-          <div style={{ 
-            background: '#ffffff', 
-            padding: '20px', 
-            borderRadius: '8px', 
-            boxShadow: '0 4px 8px rgba(0,0,0,0.2)', 
-            maxWidth: '400px', 
-            width: '100%' 
-          }}>
-            <h3 style={{ color: '#4CAF50', marginBottom: '15px' }}>
-              <Plane size={24} style={{ verticalAlign: 'middle', marginRight: '10px' }} />
+        <div className="popup">
+          <div className="popup-content">
+            <h3>
+              <Plane size={24} className="inline-icon" />
               Flight Details
             </h3>
-            <p style={{ margin: '5px 0' }}><strong>Flight:</strong> {selectedFlight.flight_id}</p>
-            <p style={{ margin: '5px 0' }}><strong>Route:</strong> {selectedFlight.origin} → {selectedFlight.dest}</p>
-            <p style={{ margin: '5px 0' }}><strong>Aircraft:</strong> {selectedFlight.tail_num}</p>
-            <p style={{ margin: '5px 0' }}><strong>Departure:</strong> {selectedFlight.dep_time}</p>
-            <p style={{ margin: '5px 0' }}><strong>Arrival:</strong> {selectedFlight.arr_time}</p>
-            <p style={{ margin: '5px 0' }}><strong>Passengers:</strong> {selectedFlight.passengers}/{selectedFlight.min_seating_capacity}</p>
-            <p style={{ margin: '5px 0' }}><strong>Ground Time:</strong> {selectedFlight.ground_time} minutes</p>
-            <p style={{ margin: '5px 0' }}><strong>CO2 Emissions:</strong> {selectedFlight.carbon.toFixed(2)} kg</p>
-            <button 
-              onClick={() => setSelectedFlight(null)} 
-              style={{ 
-                marginTop: '15px', 
-                padding: '8px 16px', 
-                background: '#4CAF50', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '4px', 
-                cursor: 'pointer' 
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#45a049'}
-              onMouseLeave={(e) => e.currentTarget.style.background = '#4CAF50'}
-            >
+            <p><strong>Flight:</strong> {selectedFlight.flight_id}</p>
+            <p><strong>Route:</strong> {selectedFlight.origin} → {selectedFlight.dest}</p>
+            <p><strong>Aircraft:</strong> {selectedFlight.tail_num}</p>
+            <p><strong>Departure:</strong> {selectedFlight.dep_time}</p>
+            <p><strong>Arrival:</strong> {selectedFlight.arr_time}</p>
+            <p><strong>Passengers:</strong> {selectedFlight.passengers}/{selectedFlight.min_seating_capacity}</p>
+            <p><strong>Ground Time:</strong> {selectedFlight.ground_time} minutes</p>
+            <p><strong>CO2 Emissions:</strong> {selectedFlight.carbon.toFixed(2)} kg</p>
+            <button className="close-button" onClick={() => setSelectedFlight(null)}>
               Close
             </button>
           </div>
