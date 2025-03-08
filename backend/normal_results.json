@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-03-09 00:57",
+  "timestamp": "2025-03-08 23:22",
   "mode": "normal",
   "assignments": {
     "F001": "N102",
     "F002": "N101",
-    "F004": "N110",
-    "F005": "N110"
+    "F004": "N104",
+    "F005": "N107"
   },
   "events": [
     {
@@ -36,7 +36,7 @@
     },
     {
       "flight_id": "F004",
-      "tail_num": "N110",
+      "tail_num": "N104",
       "origin": "ORD",
       "dest": "MIA",
       "dep_time": "2025-03-07 08:00",
@@ -45,11 +45,11 @@
       "ground_time": 60,
       "onward_flight": null,
       "passengers": 135,
-      "carbon": 10721.649484536083
+      "carbon": 10947.368421052632
     },
     {
       "flight_id": "F005",
-      "tail_num": "N110",
+      "tail_num": "N107",
       "origin": "MIA",
       "dest": "JFK",
       "dep_time": "2025-03-07 11:00",
@@ -58,7 +58,7 @@
       "ground_time": 60,
       "onward_flight": null,
       "passengers": 150,
-      "carbon": 10721.649484536083
+      "carbon": 10833.333333333334
     }
   ],
   "chaos_recovered": 0
