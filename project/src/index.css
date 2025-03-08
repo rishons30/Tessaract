@@ -10,6 +10,8 @@
   --gray-800: #1f2937;
   --red-500: #ef4444;
   --red-600: #dc2626;
+  --efficiency-green: #e6ffe6;
+  --tight-blue: #e6f0ff;
 }
 
 * {
@@ -121,12 +123,13 @@ body {
   color: var(--primary-dark);
 }
 
-/* Table Styles */
+/* Table Styles (still used for other pages) */
 .table-container {
   background: var(--white);
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: auto;
+  position: relative;
 }
 
 .data-table {
@@ -150,6 +153,7 @@ body {
 .data-table td {
   padding: 1rem;
   border-bottom: 1px solid var(--gray-200);
+  position: relative;
 }
 
 .data-table tbody tr:hover {
@@ -158,6 +162,95 @@ body {
 
 .data-table tr.selected {
   background: var(--gray-200);
+}
+
+.data-table tr.efficient {
+  background: var(--efficiency-green);
+}
+
+.data-table tr.tight-turnaround {
+  background: var(--tight-blue);
+}
+
+/* Aircraft Schedule Styles */
+.aircraft-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aircraft-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aircraft-header {
+  width: 120px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-align: right;
+  padding: 0.5rem;
+}
+
+.flight-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.flight-block {
+  background: var(--efficiency-green);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.flight-block:hover {
+  transform: scale(1.05);
+  background: var(--primary-light);
+}
+
+.maintenance-gap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--gray-200);
+  border-radius: 0.25rem;
+  color: var(--gray-800);
+  font-style: italic;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gray-800);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Popup Styles */
@@ -245,6 +338,30 @@ body {
   color: var(--white);
   border-radius: 0.25rem;
   margin-bottom: 2rem;
+}
+
+.chaos-comparison {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.chaos-card {
+  flex: 1;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.chaos-card.before {
+  border-top: 4px solid var(--red-500);
+}
+
+.chaos-card.after {
+  border-top: 4px solid var(--primary);
 }
 
 /* Forms */
@@ -349,51 +466,34 @@ body {
   font-size: 2rem;
   font-weight: 700;
   color: var(--gray-800);
-}
-
-.chart-section {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.utilization-bar {
-  height: 2rem;
-  background: var(--gray-200);
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
-.utilization-fill {
-  height: 100%;
-  background: var(--primary);
-  color: var(--white);
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  transition: width 1s ease;
+  gap: 0.5rem;
 }
 
-.coming-soon {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.stat-trend {
+  font-size: 0.875rem;
+  color: var(--primary);
 }
 
-.coming-soon h3 {
-  color: var(--primary-dark);
+.stat-trend.negative {
+  color: var(--red-500);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
   margin-bottom: 1rem;
 }
 
-.coming-soon p {
-  color: var(--gray-800);
-  opacity: 0.8;
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 1s ease;
 }
 
 /* Toggle Buttons for Data Entry */
@@ -485,5 +585,23 @@ body {
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .chaos-comparison {
+    flex-direction: column;
+  }
+
+  .aircraft-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aircraft-header {
+    width: 100%;
+    text-align: left;
+  }
+
+  .flight-chain {
+    width: 100%;
   }
 }

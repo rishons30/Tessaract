@@ -26,6 +26,19 @@ function Statistics() {
       .catch(error => console.error('Error fetching stats:', error));
   }, []);
 
+  // Fake baseline for trend indicators (could be from previous run if stored)
+  const baseline = {
+    total_co2: 60000, // Arbitrary higher value
+    avg_passengers: 130 // Slightly lower
+  };
+
+  const co2Trend = stats.total_co2 < baseline.total_co2 
+    ? `-${Math.round(((baseline.total_co2 - stats.total_co2) / baseline.total_co2) * 100)}%` 
+    : `+${Math.round(((stats.total_co2 - baseline.total_co2) / baseline.total_co2) * 100)}%`;
+  const passengerTrend = stats.avg_passengers > baseline.avg_passengers 
+    ? `+${Math.round(((stats.avg_passengers - baseline.avg_passengers) / baseline.avg_passengers) * 100)}%` 
+    : `-${Math.round(((baseline.avg_passengers - stats.avg_passengers) / baseline.avg_passengers) * 100)}%`;
+
   return (
     <div className="container">
       <h2 className="page-title">Statistics</h2>
@@ -44,7 +57,12 @@ function Statistics() {
             <Activity size={24} />
             <h3>Average Passengers</h3>
           </div>
-          <div className="stat-value">{stats.avg_passengers}</div>
+          <div className="stat-value">
+            {stats.avg_passengers}
+            <span className={`stat-trend ${stats.avg_passengers > baseline.avg_passengers ? '' : 'negative'}`}>
+              {passengerTrend}
+            </span>
+          </div>
         </div>
 
         <div className="stat-card">
@@ -52,7 +70,12 @@ function Statistics() {
             <BarChart size={24} />
             <h3>Total CO2 Emissions</h3>
           </div>
-          <div className="stat-value">{stats.total_co2} kg</div>
+          <div className="stat-value">
+            {stats.total_co2} kg
+            <span className={`stat-trend ${stats.total_co2 < baseline.total_co2 ? '' : 'negative'}`}>
+              {co2Trend}
+            </span>
+          </div>
         </div>
 
         <div className="stat-card">

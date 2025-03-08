@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ArrowUpDown, Plane } from 'lucide-react';
+import { ArrowUpDown, Plane, Wrench } from 'lucide-react';
 
 function Schedule() {
-  const [sortField, setSortField] = useState(null);
-  const [sortDirection, setSortDirection] = useState('asc');
   const [selectedFlight, setSelectedFlight] = useState(null);
-  const [flights, setFlights] = useState([]);
+  const [aircraftSchedules, setAircraftSchedules] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState({
     subtype: '',
     start_date: '2025-03-07',
@@ -16,6 +15,7 @@ function Schedule() {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     const params = new URLSearchParams({
       subtype: filters.subtype,
       start_date: filters.start_date,
@@ -26,8 +26,41 @@ function Schedule() {
     });
     fetch(`http://localhost:5000/schedule?${params}`)
       .then(response => response.json())
-      .then(data => setFlights(data.events || []))
-      .catch(error => console.error('Error fetching schedule:', error));
+      .then(data => {
+        const flights = data.events || [];
+        const schedules = {};
+        flights.forEach(flight => {
+          const tail = flight.tail_num;
+          if (!schedules[tail]) {
+            schedules[tail] = [];
+          }
+          schedules[tail].push(flight);
+        });
+        // Sort flights by departure time within each aircraft
+        Object.keys(schedules).forEach(tail => {
+          schedules[tail].sort((a, b) => new Date(a.dep_time) - new Date(b.dep_time));
+          // Insert maintenance gaps (assuming 60 min minimum between flights)
+          const withGaps = [];
+          for (let i = 0; i < schedules[tail].length; i++) {
+            withGaps.push(schedules[tail][i]);
+            if (i < schedules[tail].length - 1) {
+              const currentFlightEnd = new Date(schedules[tail][i].arr_time);
+              const nextFlightStart = new Date(schedules[tail][i + 1].dep_time);
+              const gapMinutes = (nextFlightStart - currentFlightEnd) / (1000 * 60);
+              if (gapMinutes > 60) { // Only show significant gaps
+                withGaps.push({ type: 'maintenance', duration: gapMinutes });
+              }
+            }
+          }
+          schedules[tail] = withGaps;
+        });
+        setAircraftSchedules(schedules);
+        setTimeout(() => setIsLoading(false), 1000);
+      })
+      .catch(error => {
+        console.error('Error fetching schedule:', error);
+        setIsLoading(false);
+      });
   }, [filters]);
 
   const handleFilterChange = (e) => {
@@ -38,29 +71,10 @@ function Schedule() {
     }));
   };
 
-  const handleSort = (field) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortField(field);
-      setSortDirection('asc');
-    }
-  };
-
-  const sortedFlights = [...flights].sort((a, b) => {
-    if (!sortField) return 0;
-    const aValue = a[sortField];
-    const bValue = b[sortField];
-    return sortDirection === 'asc' 
-      ? aValue > bValue ? 1 : -1
-      : aValue < bValue ? 1 : -1;
-  });
-
   return (
     <div className="container">
-      <h2 className="page-title">Flight Schedule</h2>
+      <h2 className="page-title">Aircraft Flight Chains</h2>
       
-      {/* Filter Form */}
       <div className="forms-container">
         <div className="form-section">
           <h3>Filters</h3>
@@ -129,69 +143,42 @@ function Schedule() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="table-container">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th onClick={() => handleSort('flight_id')}>
-                Flight ID <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('tail_num')}>
-                Tail Number <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('origin')}>
-                Origin <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('dest')}>
-                Destination <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('dep_time')}>
-                Departure <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('arr_time')}>
-                Arrival <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('min_seating_capacity')}>
-                Min Seats <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('ground_time')}>
-                Ground Time <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('passengers')}>
-                Passengers <ArrowUpDown size={16} />
-              </th>
-              <th onClick={() => handleSort('carbon')}>
-                CO2 (kg) <ArrowUpDown size={16} />
-              </th>
-              <th>Onward Flight</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedFlights.map((flight) => (
-              <tr 
-                key={flight.flight_id}
-                onClick={() => setSelectedFlight(flight)}
-                className={selectedFlight?.flight_id === flight.flight_id ? 'selected' : ''}
-              >
-                <td>{flight.flight_id}</td>
-                <td>{flight.tail_num}</td>
-                <td>{flight.origin}</td>
-                <td>{flight.dest}</td>
-                <td>{flight.dep_time.split(' ')[1]}</td>
-                <td>{flight.arr_time.split(' ')[1]}</td>
-                <td>{flight.min_seating_capacity}</td>
-                <td>{flight.ground_time} min</td>
-                <td>{flight.passengers}</td>
-                <td>{flight.carbon.toFixed(2)}</td>
-                <td>{flight.onward_flight || '-'}</td>
-              </tr>
+        {isLoading ? (
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: '100%' }}></div>
+          </div>
+        ) : (
+          <div className="aircraft-schedule">
+            {Object.keys(aircraftSchedules).map(tail => (
+              <div key={tail} className="aircraft-row">
+                <div className="aircraft-header">{tail}</div>
+                <div className="flight-chain">
+                  {aircraftSchedules[tail].map((item, index) => (
+                    item.type === 'maintenance' ? (
+                      <div key={`${tail}-maintenance-${index}`} className="maintenance-gap">
+                        <Wrench size={16} />
+                        <span>{item.duration} min Maintenance</span>
+                      </div>
+                    ) : (
+                      <div 
+                        key={item.flight_id} 
+                        className="flight-block tooltip efficient" 
+                        onClick={() => setSelectedFlight(item)}
+                        data-tooltip={`Route: ${item.origin} → ${item.dest}`}
+                      >
+                        <div>{item.flight_id}</div>
+                        <div>{item.dep_time.split(' ')[1]} - {item.arr_time.split(' ')[1]}</div>
+                      </div>
+                    )
+                  ))}
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        )}
       </div>
 
-      {/* Popup */}
       {selectedFlight && (
         <div className="popup">
           <div className="popup-content">
