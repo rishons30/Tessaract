@@ -16,10 +16,10 @@ The official template repository for Define 3.0
 ### Team Members
 | Name | Role | GitHub | LinkedIn |
 |------|------|--------|----------|
-| Tanmaya Pradeep | Team Leader | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| Edwin Jojie | Team member | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| Rishon Simon | Team member | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| Rachel Mariam Abraham | Team member | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
+| Tanmaya Pradeep | Team Leader | [rishons30](https://github.com/rishons30) | [Profile](https://linkedin.com/in/username) |
+| Edwin Jojie | Team member | [edwinjojie](https://github.com/edwinjojie) | [Profile](https://linkedin.com/in/username) |
+| Rishon Simon | Team member | [rishons30](https://github.com/rishons30) | [Profile](https://linkedin.com/in/username) |
+| Rachel Mariam Abraham | Team member | [riyabby24](https://github.com/riyabby24) | [Profile](https://linkedin.com/in/username) |
 
 ## Project Details
 
@@ -42,9 +42,9 @@ _Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link
 ## Technical Implementation
 
 ### Technologies Used
-- **Frontend**: [Technologies]
-- **Backend**: [Technologies]
-- **Database**: [Technologies]
+- **Frontend**: Reactjs
+- **Backend**: Flask
+- **Database**: Local Database
 - **APIs**: [Technologies]
 - **DevOps**: [Technologies]
 - **Other Tools**: [Technologies]
