@@ -32,154 +32,99 @@ import {
 } from "@/lib/api"
 
 export function CrewManagementPage() {
-  const [crewMembers, setCrewMembers] = useState([])
-  const [flights, setFlights] = useState([])
-  const [crewAssignments, setCrewAssignments] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [activeTab, setActiveTab] = useState("crew-list")
-  const [selectedCrew, setSelectedCrew] = useState(null)
-  const [selectedFlight, setSelectedFlight] = useState(null)
-  const [showAssignDialog, setShowAssignDialog] = useState(false)
+  const [crewMembers, setCrewMembers] = useState([]);
+  const [flights, setFlights] = useState([]);
+  const [crewAssignments, setCrewAssignments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("crew-list");
+  const [selectedCrew, setSelectedCrew] = useState(null);
+  const [selectedFlight, setSelectedFlight] = useState(null);
+  const [showAssignDialog, setShowAssignDialog] = useState(false);
 
   const [formData, setFormData] = useState({
-    crewID: "",
-    firstName: "",
-    lastName: "",
-    age: "",
-    airline: "GreenTail",
-    currentLocation: "",
+    name: "",
     role: "Flight Attendant",
-    qualification: "Standard",
-    experience: "",
-    status: "Available",
-  })
-
-  const [crewIdError, setCrewIdError] = useState("")
+    certifications: "",
+    availability: "",
+  });
 
   // Fetch crew members, flights, and assignments
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
-      setError(null)
+      setIsLoading(true);
+      setError(null);
 
       try {
         const [crewData, flightData, assignmentData] = await Promise.all([
           fetchCrewMembers(),
           fetchFlights(),
           getCrewAssignments(),
-        ])
+        ]);
 
-        setCrewMembers(crewData)
-        setFlights(flightData?.flights || [])
-        setCrewAssignments(assignmentData)
-        setIsLoading(false)
+        setCrewMembers(crewData);
+        setFlights(flightData?.flights || []);
+        setCrewAssignments(assignmentData);
+        setIsLoading(false);
       } catch (err) {
-        setError("Failed to load data. Please try again.")
-        setIsLoading(false)
+        console.error("Fetch error:", err); // Log the error for debugging
+        setError("Failed to load data. Please try again.");
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   // Handle form input changes
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    let updatedValue = value
-
-    // Handle crewID input
-    if (name === "crewID") {
-      // Force uppercase and restrict to alphanumeric characters
-      updatedValue = value.toUpperCase().replace(/[^A-Z0-9]/g, "")
-
-      // Real-time validation for crewID
-      const crewIdRegex = /^[A-Z0-9]{0,5}$/
-      if (!crewIdRegex.test(updatedValue)) {
-        setCrewIdError("Crew ID must contain only uppercase alphanumeric characters")
-      } else if (updatedValue.length > 0 && updatedValue.length < 5) {
-        setCrewIdError("Crew ID must be exactly 5 characters")
-      } else if (updatedValue.length === 5) {
-        setCrewIdError("")
-      }
-    }
-
-    setFormData({ ...formData, [name]: updatedValue })
-  }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   // Handle select input changes
   const handleSelectChange = (name, value) => {
-    setFormData({ ...formData, [name]: value })
-  }
+    setFormData({ ...formData, [name]: value });
+  };
 
   // Handle form submission to add a new crew member
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    // Validation for crewID: Must be exactly 5 alphanumeric characters
-    const crewIdRegex = /^[A-Z0-9]{5}$/
-    if (!crewIdRegex.test(formData.crewID)) {
-      setCrewIdError("Crew ID must be exactly 5 alphanumeric characters (e.g., A1B2C)")
-      return
-    }
-
-    // Check if crew ID already exists
-    if (crewMembers.some((crew) => crew.crewID === formData.crewID)) {
-      setCrewIdError("Crew ID already exists")
-      return
-    }
+    e.preventDefault();
 
     try {
       const newCrewMember = {
-        crewID: formData.crewID,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        age: Number.parseInt(formData.age),
-        airline: formData.airline,
-        currentLocation: formData.currentLocation,
+        name: formData.name,
         role: formData.role,
-        qualification: formData.qualification,
-        experience: Number.parseInt(formData.experience),
-        status: formData.status,
-      }
+        certifications: formData.certifications ? formData.certifications.split(",").map(s => s.trim()) : [],
+        availability: formData.availability || new Date().toISOString().slice(0, 16).replace("T", " "),
+      };
 
-      const result = await addCrewMember(newCrewMember)
-
-      // Update the local state
-      setCrewMembers([...crewMembers, result])
+      const result = await addCrewMember(newCrewMember);
+      setCrewMembers([...crewMembers, result.crew]); // Backend returns {message, crew}
 
       // Reset the form
       setFormData({
-        crewID: "",
-        firstName: "",
-        lastName: "",
-        age: "",
-        airline: "GreenTail",
-        currentLocation: "",
+        name: "",
         role: "Flight Attendant",
-        qualification: "Standard",
-        experience: "",
-        status: "Available",
-      })
-
-      setCrewIdError("")
+        certifications: "",
+        availability: "",
+      });
 
       toast({
         title: "Success",
         description: "Crew member added successfully",
-      })
+      });
 
-      // Switch to crew list tab
-      setActiveTab("crew-list")
+      setActiveTab("crew-list");
     } catch (err) {
       toast({
         title: "Error",
         description: "Failed to add crew member",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   // Handle crew assignment to flight
   const handleAssignCrew = async () => {
@@ -188,79 +133,76 @@ export function CrewManagementPage() {
         title: "Error",
         description: "Please select both a crew member and a flight",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
     try {
-      await assignCrewToFlight(selectedCrew.crewID, selectedFlight.flight_id)
+      await assignCrewToFlight(selectedCrew.id, selectedFlight.flight_id);
 
-      // Refresh assignments
-      const updatedAssignments = await getCrewAssignments()
-      setCrewAssignments(updatedAssignments)
+      const updatedAssignments = await getCrewAssignments();
+      setCrewAssignments(updatedAssignments);
 
       toast({
         title: "Success",
-        description: `${selectedCrew.firstName} ${selectedCrew.lastName} assigned to flight ${selectedFlight.flight_id}`,
-      })
+        description: `${selectedCrew.name} assigned to flight ${selectedFlight.flight_id}`,
+      });
 
-      setShowAssignDialog(false)
-      setSelectedCrew(null)
-      setSelectedFlight(null)
+      setShowAssignDialog(false);
+      setSelectedCrew(null);
+      setSelectedFlight(null);
     } catch (err) {
       toast({
         title: "Error",
         description: "Failed to assign crew member to flight",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   // Handle removing crew assignment
   const handleRemoveAssignment = async (crewId, flightId) => {
     try {
-      await removeCrewAssignment(crewId, flightId)
+      await removeCrewAssignment(crewId, flightId);
 
-      // Refresh assignments
-      const updatedAssignments = await getCrewAssignments()
-      setCrewAssignments(updatedAssignments)
+      const updatedAssignments = await getCrewAssignments();
+      setCrewAssignments(updatedAssignments);
 
       toast({
         title: "Success",
         description: "Crew assignment removed successfully",
-      })
+      });
     } catch (err) {
       toast({
         title: "Error",
         description: "Failed to remove crew assignment",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   // Filter crew members based on search term
   const filteredCrewMembers = crewMembers.filter(
     (crew) =>
-      crew.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      crew.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      crew.crewID.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      crew.role.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+      crew.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      crew.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      crew.id.toString().includes(searchTerm)
+  );
 
   // Get crew assignments with details
   const assignmentsWithDetails = crewAssignments.map((assignment) => {
-    const crew = crewMembers.find((c) => c.crewID === assignment.crewId)
-    const flight = flights.find((f) => f.flight_id === assignment.flightId)
+    const crew = crewMembers.find((c) => c.id === assignment.crew_id);
+    const flight = flights.find((f) => f.flight_id === assignment.flight_id);
 
     return {
       ...assignment,
-      crewName: crew ? `${crew.firstName} ${crew.lastName}` : "Unknown",
+      crewName: crew ? crew.name : "Unknown",
       crewRole: crew?.role || "Unknown",
       flightRoute: flight ? `${flight.origin} → ${flight.dest}` : "Unknown",
       departureTime: flight?.dep_time || "Unknown",
       arrivalTime: flight?.arr_time || "Unknown",
-    }
-  })
+    };
+  });
 
   return (
     <div className="container py-8">
@@ -288,8 +230,8 @@ export function CrewManagementPage() {
                   <Label htmlFor="crew">Crew Member</Label>
                   <Select
                     onValueChange={(value) => {
-                      const crew = crewMembers.find((c) => c.id.toString() === value)
-                      setSelectedCrew(crew)
+                      const crew = crewMembers.find((c) => c.id.toString() === value);
+                      setSelectedCrew(crew);
                     }}
                   >
                     <SelectTrigger>
@@ -298,7 +240,7 @@ export function CrewManagementPage() {
                     <SelectContent>
                       {crewMembers.map((crew) => (
                         <SelectItem key={crew.id} value={crew.id.toString()}>
-                          {crew.crewID} - {crew.firstName} {crew.lastName} ({crew.role})
+                          {crew.id} - {crew.name} ({crew.role})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -309,8 +251,8 @@ export function CrewManagementPage() {
                   <Label htmlFor="flight">Flight</Label>
                   <Select
                     onValueChange={(value) => {
-                      const flight = flights.find((f) => f.flight_id === value)
-                      setSelectedFlight(flight)
+                      const flight = flights.find((f) => f.flight_id === value);
+                      setSelectedFlight(flight);
                     }}
                   >
                     <SelectTrigger>
@@ -387,41 +329,28 @@ export function CrewManagementPage() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Crew ID</TableHead>
+                        <TableHead>ID</TableHead>
                         <TableHead>Name</TableHead>
                         <TableHead>Role</TableHead>
-                        <TableHead>Qualification</TableHead>
-                        <TableHead>Experience</TableHead>
-                        <TableHead>Location</TableHead>
-                        <TableHead>Status</TableHead>
+                        <TableHead>Certifications</TableHead>
+                        <TableHead>Availability</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredCrewMembers.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                          <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
                             No crew members found
                           </TableCell>
                         </TableRow>
                       ) : (
                         filteredCrewMembers.map((crew) => (
                           <TableRow key={crew.id}>
-                            <TableCell className="font-medium">{crew.crewID}</TableCell>
-                            <TableCell>
-                              {crew.firstName} {crew.lastName}
-                            </TableCell>
+                            <TableCell className="font-medium">{crew.id}</TableCell>
+                            <TableCell>{crew.name}</TableCell>
                             <TableCell>{crew.role}</TableCell>
-                            <TableCell>{crew.qualification}</TableCell>
-                            <TableCell>{crew.experience} years</TableCell>
-                            <TableCell>{crew.currentLocation}</TableCell>
-                            <TableCell>
-                              <Badge
-                                variant={crew.status === "Available" ? "outline" : "secondary"}
-                                className={crew.status === "Available" ? "bg-primary/10 text-primary border-0" : ""}
-                              >
-                                {crew.status}
-                              </Badge>
-                            </TableCell>
+                            <TableCell>{crew.certifications.join(", ")}</TableCell>
+                            <TableCell>{crew.availability}</TableCell>
                           </TableRow>
                         ))
                       )}
@@ -443,76 +372,13 @@ export function CrewManagementPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="crewID">Crew ID*</Label>
+                    <Label htmlFor="name">Name*</Label>
                     <Input
-                      id="crewID"
-                      name="crewID"
-                      value={formData.crewID}
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="e.g., CR001"
-                      maxLength={5}
-                      className={crewIdError ? "border-destructive" : ""}
-                    />
-                    {crewIdError && <p className="text-destructive text-sm">{crewIdError}</p>}
-                    <p className="text-xs text-muted-foreground">5 uppercase alphanumeric characters</p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="airline">Airline*</Label>
-                    <Input
-                      id="airline"
-                      name="airline"
-                      value={formData.airline}
-                      onChange={handleInputChange}
-                      placeholder="e.g., GreenTail"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name*</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      placeholder="e.g., John"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name*</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      placeholder="e.g., Smith"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="age">Age*</Label>
-                    <Input
-                      id="age"
-                      name="age"
-                      type="number"
-                      value={formData.age}
-                      onChange={handleInputChange}
-                      placeholder="e.g., 35"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="currentLocation">Current Location*</Label>
-                    <Input
-                      id="currentLocation"
-                      name="currentLocation"
-                      value={formData.currentLocation}
-                      onChange={handleInputChange}
-                      placeholder="e.g., LAX"
+                      placeholder="e.g., John Doe"
                       required
                     />
                   </div>
@@ -529,62 +395,32 @@ export function CrewManagementPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Pilot">Pilot</SelectItem>
+                        <SelectItem value="Co-Pilot">Co-Pilot</SelectItem>
                         <SelectItem value="Flight Attendant">Flight Attendant</SelectItem>
-                        <SelectItem value="Engineer">Engineer</SelectItem>
-                        <SelectItem value="Ground Staff">Ground Staff</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="qualification">Qualification*</Label>
-                    <Select
-                      name="qualification"
-                      defaultValue={formData.qualification}
-                      onValueChange={(value) => handleSelectChange("qualification", value)}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select qualification" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Captain">Captain</SelectItem>
-                        <SelectItem value="First Officer">First Officer</SelectItem>
-                        <SelectItem value="Lead">Lead</SelectItem>
-                        <SelectItem value="Standard">Standard</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="experience">Experience (years)*</Label>
+                    <Label htmlFor="certifications">Certifications (comma-separated)</Label>
                     <Input
-                      id="experience"
-                      name="experience"
-                      type="number"
-                      value={formData.experience}
+                      id="certifications"
+                      name="certifications"
+                      value={formData.certifications}
                       onChange={handleInputChange}
-                      placeholder="e.g., 5"
-                      required
+                      placeholder="e.g., Boeing 737, Airbus A320"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="status">Status*</Label>
-                    <Select
-                      name="status"
-                      defaultValue={formData.status}
-                      onValueChange={(value) => handleSelectChange("status", value)}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Available">Available</SelectItem>
-                        <SelectItem value="On Duty">On Duty</SelectItem>
-                        <SelectItem value="On Leave">On Leave</SelectItem>
-                        <SelectItem value="Training">Training</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Label htmlFor="availability">Availability (YYYY-MM-DD HH:MM)</Label>
+                    <Input
+                      id="availability"
+                      name="availability"
+                      value={formData.availability}
+                      onChange={handleInputChange}
+                      placeholder="e.g., 2025-03-08 08:00"
+                    />
                   </div>
                 </div>
 
@@ -637,10 +473,10 @@ export function CrewManagementPage() {
                       ) : (
                         assignmentsWithDetails.map((assignment, index) => (
                           <TableRow key={index}>
-                            <TableCell className="font-medium">{assignment.crewId}</TableCell>
+                            <TableCell className="font-medium">{assignment.crew_id}</TableCell>
                             <TableCell>{assignment.crewName}</TableCell>
                             <TableCell>{assignment.crewRole}</TableCell>
-                            <TableCell>{assignment.flightId}</TableCell>
+                            <TableCell>{assignment.flight_id}</TableCell>
                             <TableCell>{assignment.flightRoute}</TableCell>
                             <TableCell>
                               {typeof assignment.departureTime === "string"
@@ -651,7 +487,7 @@ export function CrewManagementPage() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                onClick={() => handleRemoveAssignment(assignment.crewId, assignment.flightId)}
+                                onClick={() => handleRemoveAssignment(assignment.crew_id, assignment.flight_id)}
                               >
                                 <X className="h-4 w-4 mr-1" />
                                 Remove
@@ -676,6 +512,5 @@ export function CrewManagementPage() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }
-

@@ -1,16 +1,15 @@
 {
-  "timestamp": "2025-03-09 07:39",
+  "timestamp": "2025-03-09 09:01",
   "mode": "normal",
   "assignments": {
-    "F001": "N101",
+    "F001": "N102",
     "F002": "N101",
-    "F004": "N107",
-    "F005": "N107"
+    "F004": "N107"
   },
   "events": [
     {
       "flight_id": "F001",
-      "tail_num": "N101",
+      "tail_num": "N102",
       "origin": "JFK",
       "dest": "LAX",
       "dep_time": "2025-03-07 07:00",
@@ -19,7 +18,7 @@
       "ground_time": 60,
       "onward_flight": "F002",
       "passengers": 165,
-      "carbon": 20408.163265306124
+      "carbon": 20618.556701030928
     },
     {
       "flight_id": "F002",
@@ -45,19 +44,6 @@
       "ground_time": 60,
       "onward_flight": null,
       "passengers": 135,
-      "carbon": 10833.333333333334
-    },
-    {
-      "flight_id": "F005",
-      "tail_num": "N107",
-      "origin": "MIA",
-      "dest": "JFK",
-      "dep_time": "2025-03-07 11:00",
-      "arr_time": "2025-03-07 13:00",
-      "min_seating_capacity": 140,
-      "ground_time": 60,
-      "onward_flight": null,
-      "passengers": 150,
       "carbon": 10833.333333333334
     }
   ],

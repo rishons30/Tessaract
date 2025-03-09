@@ -12,8 +12,83 @@
     },
     {
       "crew_id": 3,
-      "flight_id": "F002",
+      "flight_id": "F001",
       "assigned_at": "2025-03-08T12:00:00"
+    },
+    {
+      "crew_id": 1,
+      "flight_id": "F002",
+      "assigned_at": "2025-03-08T12:05:00"
+    },
+    {
+      "crew_id": 2,
+      "flight_id": "F002",
+      "assigned_at": "2025-03-08T12:05:00"
+    },
+    {
+      "crew_id": 6,
+      "flight_id": "F002",
+      "assigned_at": "2025-03-08T12:05:00"
+    },
+    {
+      "crew_id": 7,
+      "flight_id": "F003",
+      "assigned_at": "2025-03-08T12:10:00"
+    },
+    {
+      "crew_id": 5,
+      "flight_id": "F003",
+      "assigned_at": "2025-03-08T12:10:00"
+    },
+    {
+      "crew_id": 9,
+      "flight_id": "F003",
+      "assigned_at": "2025-03-08T12:10:00"
+    },
+    {
+      "crew_id": 4,
+      "flight_id": "F004",
+      "assigned_at": "2025-03-08T12:15:00"
+    },
+    {
+      "crew_id": 8,
+      "flight_id": "F004",
+      "assigned_at": "2025-03-08T12:15:00"
+    },
+    {
+      "crew_id": 6,
+      "flight_id": "F004",
+      "assigned_at": "2025-03-08T12:15:00"
+    },
+    {
+      "crew_id": 10,
+      "flight_id": "F005",
+      "assigned_at": "2025-03-08T12:20:00"
+    },
+    {
+      "crew_id": 5,
+      "flight_id": "F005",
+      "assigned_at": "2025-03-08T12:20:00"
+    },
+    {
+      "crew_id": 3,
+      "flight_id": "F005",
+      "assigned_at": "2025-03-08T12:20:00"
+    },
+    {
+      "crew_id": 10,
+      "flight_id": "dhhe22",
+      "assigned_at": "2025-03-08T12:25:00"
+    },
+    {
+      "crew_id": 8,
+      "flight_id": "dhhe22",
+      "assigned_at": "2025-03-08T12:25:00"
+    },
+    {
+      "crew_id": 9,
+      "flight_id": "dhhe22",
+      "assigned_at": "2025-03-08T12:25:00"
     }
   ]
 }
