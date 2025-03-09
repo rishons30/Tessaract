@@ -121,10 +121,10 @@ export function DisruptionsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Disruption Management</h1>
           <p className="text-muted-foreground">Intelligent recovery from operational disruptions</p>
         </div>
-        <Button variant={isChaosMode ? "destructive" : "outline"} onClick={toggleChaosMode} className="gap-2">
+        {/* <Button variant={isChaosMode ? "destructive" : "outline"} onClick={toggleChaosMode} className="gap-2">
           <AlertTriangle className="h-4 w-4" />
           {isChaosMode ? "Disable Chaos Mode" : "Trigger Chaos Mode"}
-        </Button>
+        </Button> */}
       </div>
 
       {isChaosMode && (
