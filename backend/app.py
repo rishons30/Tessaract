@@ -11,6 +11,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 AIRCRAFT_FILE = "aircraft.json"
 FLIGHTS_FILE = "flights.json"
 RESULTS_DB_FILE = "results_db.json"
+CREW_FILE = "crew.json"  # New file for crew data
+CREW_ASSIGNMENTS_FILE = "crew_assignments.json"  # New file for crew assignments
 
 # Load initial data
 def load_data(file_path, default):
@@ -27,8 +29,10 @@ def load_data(file_path, default):
 aircraft_data = load_data(AIRCRAFT_FILE, {"aircraft": []})
 flights_data = load_data(FLIGHTS_FILE, {"flights": []})
 results_db = load_data(RESULTS_DB_FILE, [])
+crew_data = load_data(CREW_FILE, {"crew": []})  # Load crew data
+crew_assignments = load_data(CREW_ASSIGNMENTS_FILE, {"assignments": []})  # Load crew assignments
 
-# Helper functions
+# Helper functions (unchanged from original)
 def parse_time(time_str):
     return datetime.strptime(time_str, "%Y-%m-%d %H:%M")
 
@@ -58,7 +62,7 @@ def calc_co2(flight, tail, aircraft_list):
     aircraft = next(a for a in aircraft_list if a["tail_num"] == tail)
     return flight["distance"] * aircraft["base_fuel"] / aircraft["efficiency"]
 
-# RL Optimization
+# RL Optimization (unchanged from original)
 def run_rl(chaos=False, respect_pre=True, break_trips=False):
     flight_list = flights_data["flights"]
     aircraft_list = aircraft_data["aircraft"]
@@ -109,7 +113,7 @@ def run_rl(chaos=False, respect_pre=True, break_trips=False):
             assignments = current_assignments
     return result
 
-# API Endpoints
+# Existing API Endpoints (unchanged)
 @app.route("/schedule", methods=["GET"])
 def get_schedule():
     global flights_data, aircraft_data
@@ -202,6 +206,72 @@ def get_statistics():
         "chaos_recovered": latest["chaos_recovered"]
     }
     return jsonify(stats)
+
+# New Crew Management Endpoints
+@app.route("/crew", methods=["GET"])
+def get_crew():
+    """Retrieve all crew members."""
+    try:
+        return jsonify(crew_data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/crew", methods=["POST"])
+def add_crew():
+    """Add a new crew member."""
+    try:
+        new_crew = request.json
+        required = ["name", "role", "certifications"]  # Define required fields
+        if not all(k in new_crew for k in required):
+            return jsonify({"error": "Missing required fields"}), 400
+        
+        # Add a unique ID if not provided
+        if "id" not in new_crew:
+            new_crew["id"] = len(crew_data["crew"]) + 1
+        
+        crew_data["crew"].append(new_crew)
+        with open(CREW_FILE, "w") as f:
+            json.dump(crew_data, f, indent=2)
+        return jsonify({"message": "Crew member added successfully", "crew": new_crew}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/crew/assign", methods=["POST"])
+def assign_crew():
+    """Assign a crew member to a flight."""
+    try:
+        assignment = request.json
+        required = ["crew_id", "flight_id"]
+        if not all(k in assignment for k in required):
+            return jsonify({"error": "Missing required fields"}), 400
+        
+        # Validate crew_id and flight_id exist
+        crew_member = next((c for c in crew_data["crew"] if c["id"] == assignment["crew_id"]), None)
+        flight = next((f for f in flights_data["flights"] if f["flight_id"] == assignment["flight_id"]), None)
+        if not crew_member:
+            return jsonify({"error": "Crew member not found"}), 404
+        if not flight:
+            return jsonify({"error": "Flight not found"}), 404
+        
+        new_assignment = {
+            "crew_id": assignment["crew_id"],
+            "flight_id": assignment["flight_id"],
+            "assigned_at": datetime.now().isoformat()
+        }
+        crew_assignments["assignments"].append(new_assignment)
+        with open(CREW_ASSIGNMENTS_FILE, "w") as f:
+            json.dump(crew_assignments, f, indent=2)
+        return jsonify({"message": "Crew assigned successfully", "assignment": new_assignment}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/crew/assignments", methods=["GET"])
+def get_crew_assignments():
+    """Retrieve all crew assignments."""
+    try:
+        return jsonify(crew_assignments)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

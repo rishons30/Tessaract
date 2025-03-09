@@ -1,0 +1,19 @@
+{
+  "assignments": [
+    {
+      "crew_id": 1,
+      "flight_id": "F001",
+      "assigned_at": "2025-03-08T12:00:00"
+    },
+    {
+      "crew_id": 2,
+      "flight_id": "F001",
+      "assigned_at": "2025-03-08T12:00:00"
+    },
+    {
+      "crew_id": 3,
+      "flight_id": "F002",
+      "assigned_at": "2025-03-08T12:00:00"
+    }
+  ]
+}

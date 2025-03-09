@@ -1,0 +1,25 @@
+{
+  "crew": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "role": "Pilot",
+      "certifications": ["Boeing 737", "Airbus A320"],
+      "availability": "2025-03-07 06:00"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "role": "Co-Pilot",
+      "certifications": ["Boeing 737"],
+      "availability": "2025-03-07 06:00"
+    },
+    {
+      "id": 3,
+      "name": "Emily Johnson",
+      "role": "Flight Attendant",
+      "certifications": [],
+      "availability": "2025-03-07 06:00"
+    }
+  ]
+}

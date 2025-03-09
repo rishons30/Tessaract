@@ -1,10 +1,11 @@
 {
-  "timestamp": "2025-03-09 06:35",
+  "timestamp": "2025-03-09 07:39",
   "mode": "normal",
   "assignments": {
     "F001": "N101",
     "F002": "N101",
-    "F004": "N107"
+    "F004": "N107",
+    "F005": "N107"
   },
   "events": [
     {
@@ -44,6 +45,19 @@
       "ground_time": 60,
       "onward_flight": null,
       "passengers": 135,
+      "carbon": 10833.333333333334
+    },
+    {
+      "flight_id": "F005",
+      "tail_num": "N107",
+      "origin": "MIA",
+      "dest": "JFK",
+      "dep_time": "2025-03-07 11:00",
+      "arr_time": "2025-03-07 13:00",
+      "min_seating_capacity": 140,
+      "ground_time": 60,
+      "onward_flight": null,
+      "passengers": 150,
       "carbon": 10833.333333333334
     }
   ],
