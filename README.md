@@ -16,7 +16,7 @@ The official template repository for Define 3.0
 ### Team Members
 | Name | Role | GitHub | LinkedIn |
 |------|------|--------|----------|
-| Tanmaya Pradeep | Team Leader | [rishons30](https://github.com/rishons30) | [Profile](https://linkedin.com/in/username) |
+| Tanmaya Pradeep | Team Leader | [tmyamya](https://github.com/tmyamya) | [Profile](https://linkedin.com/in/username) |
 | Edwin Jojie | Team member | [edwinjojie](https://github.com/edwinjojie) | [Profile](https://linkedin.com/in/username) |
 | Rishon Simon | Team member | [rishons30](https://github.com/rishons30) | [Profile](https://linkedin.com/in/username) |
 | Rachel Mariam Abraham | Team member | [riyabby24](https://github.com/riyabby24) | [Profile](https://linkedin.com/in/username) |
@@ -24,14 +24,13 @@ The official template repository for Define 3.0
 ## Project Details
 
 ### Overview
-_A concise summary of your project (2-3 sentences)_
+Our project aims to tackle the problem of tail assignment with the help of reinforcment learning. Also by adding a touch of sustainability by introducing CO2 emission reduction.
 
 ### Problem Statement
-_Describe the problem your project aims to solve_
+The Tail Assignment Problem involves assigning flights to aircraft while meeting constraints and ensuring all flights are scheduled. Aircraft are matched based on subtype and seating capacity, considering maintenance and pre-assigned schedules. The system allows users to define aircraft type, scheduling period, exclusions, and whether trips must stay on the same aircraft or can be split.
 
 ### Solution
-_Explain your approach to solving the problem_
-
+We have implemented reinforcement learning covered the features provided in  the detailed problem statement along with additional features like CO2 emission reduction,chaos mode,crew management. 
 ### Demo
 [![Project Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
 _Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link_
