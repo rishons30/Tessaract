@@ -48,9 +48,9 @@ We created a website for tail assignment problem where we implemented features p
 - **Other Tools**: [Technologies]
 
 ### Key Features
-- Feature 1
-- Feature 2
-- Feature 3
+- CO2 emission reduction
+- Crew Management
+- Reinforcment Learning
 
 ## Setup Instructions
 
